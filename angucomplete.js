@@ -14,6 +14,7 @@ angular.module('angucomplete', [] )
             "selectedObject": "=selectedobject",
             "url": "@url",
             "dataField": "@datafield",
+            "propertiesField": "@propertiesfield",
             "titleField": "@titlefield",
             "descriptionField": "@descriptionfield",
             "imageField": "@imagefield",
@@ -59,17 +60,29 @@ angular.module('angucomplete', [] )
                         titleFields = $scope.titleField.split(",");
                     }
 
+                    var propertiesField = []
+                    if ($scope.propertiesField && $scope.propertiesField != "") {
+                        propertiesField = $scope.propertiesField.split(",");
+                    }
+                    
                     for (var i = 0; i < responseData.length; i++) {
                         // Get title variables
-                        var titleCode = [];
+                        var titleCode = [],
+                            data = responseData[i];
+                        
+                        if (propertiesField.length) {
+                            for (var p = 0; p < propertiesField.length; p++) {
+                                data = data[propertiesField[p]]
+                            }                            
+                        }
 
                         for (var t = 0; t < titleFields.length; t++) {
-                            titleCode.push(responseData[i][titleFields[t]]);
+                            titleCode.push(data[titleFields[t]]);
                         }
 
                         var description = "";
                         if ($scope.descriptionField) {
-                            description = responseData[i][$scope.descriptionField];
+                            description = data[$scope.descriptionField];
                         }
 
                         var imageUri = "";
@@ -79,7 +92,7 @@ angular.module('angucomplete', [] )
 
                         var image = "";
                         if ($scope.imageField) {
-                            image = imageUri + responseData[i][$scope.imageField];
+                            image = imageUri + data[$scope.imageField];
                         }
 
                         var text = titleCode.join(' ');
@@ -93,7 +106,7 @@ angular.module('angucomplete', [] )
                             title: text,
                             description: description,
                             image: image,
-                            originalObject: responseData[i]
+                            originalObject: data
                         }
 
                         $scope.results[$scope.results.length] = resultRow;

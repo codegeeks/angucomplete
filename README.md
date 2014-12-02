@@ -23,6 +23,7 @@ var app = angular.module('app', ["angucomplete"]);
 ```html
 <angucomplete id="ex1"
               placeholder="Search countries"
+              templateurl="components/lib/vendor/angucomplete/angucomplete.html" 
               pause="100"
               selectedobject="selectedCountry"
               localdata="countries"
@@ -37,6 +38,7 @@ var app = angular.module('app', ["angucomplete"]);
 ```html
 <angucomplete id="members"
               placeholder="Search members"
+              templateurl="components/lib/vendor/angucomplete/angucomplete.html" 
               pause="400"
               selectedobject="testObj"
               url="http://myserver.com/api/user/find?s="
@@ -54,6 +56,7 @@ var app = angular.module('app', ["angucomplete"]);
 | placeholder | Placeholder text for the search field | No | Search members |
 | pause | The time to wait (in milliseconds) before searching when the user enters new characters | No | 400 |
 | selectedObject | Where to store the selected object in your model/controller (like ng-model) | Yes | myObject |
+| templateurl | The relative url to the angucomplete template, you want to use | Yes | components/lib/vendor/angucomplete/angucomplete.html
 | url | The remote URL to hit to query for results in JSON. angucomplete will automatically append the search string on the end of this, so it must be a GET request | No | http://myserver.com/api/users/find?searchstr= |
 | datafield | The name of the field in the JSON object returned back that holds the Array of objects to be used for the autocomplete list. | No | results |
 | propertiesfield | The name of the field in the JSON object returned back that holds the properties, you want to display. For nesting, seperate keys by comma. | No | profile,general

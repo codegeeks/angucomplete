@@ -106,7 +106,7 @@ angular.module('angucomplete', [] )
                             title: text,
                             description: description,
                             image: image,
-                            originalObject: data
+                            originalObject: responseData[i]
                         }
 
                         $scope.results[$scope.results.length] = resultRow;

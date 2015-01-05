@@ -236,6 +236,7 @@ angular.module('angucomplete', [] )
                         event.stopPropagation();
                     } else {
                         $scope.results = [];
+                        $scope.showDropdown = false;
                         $scope.$apply();
                         event.preventDefault;
                         event.stopPropagation();

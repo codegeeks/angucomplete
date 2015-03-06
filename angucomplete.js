@@ -146,7 +146,17 @@ angular.module('angucomplete', [] )
                         $http.get($scope.url + str, {}).
                             success(function(responseData, status, headers, config) {
                                 $scope.searching = false;
-                                $scope.processResults((($scope.dataField) ? responseData[$scope.dataField] : responseData ), str);
+                                var response = responseData;
+                                if ($scope.dataField){
+                                    if($scope.dataField.indexOf(',') > -1) {
+                                        var dataFields = $scope.dataField.split(",");
+                                        for(var k=0; k<dataFields.length; k++){
+                                            response = response[dataFields[k]];
+                                        }
+                                    }
+                                    else response = response[$scope.dataField];
+                                }
+                                $scope.processResults(response, str);
                             }).
                             error(function(data, status, headers, config) {
                                 console.log("error");

@@ -58,7 +58,7 @@ var app = angular.module('app', ["angucomplete"]);
 | selectedObject | Where to store the selected object in your model/controller (like ng-model) | Yes | myObject |
 | templateurl | The relative url to the angucomplete template, you want to use | Yes | components/lib/vendor/angucomplete/angucomplete.html
 | url | The remote URL to hit to query for results in JSON. angucomplete will automatically append the search string on the end of this, so it must be a GET request | No | http://myserver.com/api/users/find?searchstr= |
-| datafield | The name of the field in the JSON object returned back that holds the Array of objects to be used for the autocomplete list. | No | results |
+| datafield | The name of the field in the JSON object returned back that holds the Array of objects to be used for the autocomplete list. For nesting, seperate keys by comma. | No | results |
 | propertiesfield | The name of the field in the JSON object returned back that holds the properties, you want to display. For nesting, seperate keys by comma. | No | profile,general
 | titlefield | The name of the field in the JSON objects returned back that should be used for displaying the title in the autocomplete list. Note, if you want to combine fields together, you can comma separate them here (e.g. for a first and last name combined) | Yes | firstName,lastName |
 | descriptionfield | The name of the field in the JSON objects returned back that should be used for displaying the description in the autocomplete list | No | twitterUsername |

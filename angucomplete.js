@@ -25,7 +25,8 @@ angular.module('angucomplete', [] )
             "localData": "=localdata",
             "searchFields": "@searchfields",
             "minLengthUser": "@minlength",
-            "matchClass": "@matchclass"
+            "matchClass": "@matchclass",
+            "searchStr": '='
         },
         template: '<div ng-include="templateUrl"></div>',
         link: function($scope, elem, attrs) {
